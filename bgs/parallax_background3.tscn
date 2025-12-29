@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtedkd0ml5in0"]
+[gd_scene load_steps=4 format=3 uid="uid://b1wt4t4j2dlh0"]
 
-[ext_resource type="Texture2D" uid="uid://byqa2bjnsjml0" path="res://bgs/resources/set3_background.png" id="1_07lrc"]
-[ext_resource type="Texture2D" uid="uid://cer0jjxph1c0x" path="res://bgs/resources/set3_tiles.png" id="2_oj5wd"]
-[ext_resource type="Texture2D" uid="uid://c8aw0vfkhnn78" path="res://bgs/resources/set3_hills.png" id="3_vlele"]
+[ext_resource type="Texture2D" uid="uid://cgoyeo82ifuoo" path="res://bgs/resources/set2_background.png" id="1_h3g8m"]
+[ext_resource type="Texture2D" uid="uid://58bmbutyxfjq" path="res://bgs/resources/set2_tiles.png" id="2_566i7"]
+[ext_resource type="Texture2D" uid="uid://ca64tg6uqd5d6" path="res://bgs/resources/set2_hills.png" id="3_fqndo"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 
@@ -10,19 +10,19 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 position = Vector2(960, 540)
-scale = Vector2(3, 2.241)
-texture = ExtResource("1_07lrc")
+scale = Vector2(3, 2.25)
+texture = ExtResource("1_h3g8m")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
 position = Vector2(960, 540)
 scale = Vector2(3, 2.25)
-texture = ExtResource("2_oj5wd")
+texture = ExtResource("2_566i7")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
 position = Vector2(960, 540)
 scale = Vector2(3, 2.25)
-texture = ExtResource("3_vlele")
+texture = ExtResource("3_fqndo")
