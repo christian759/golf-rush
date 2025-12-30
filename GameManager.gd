@@ -26,13 +26,22 @@ var levels: Array[String] = [
 ]
 
 func _ready():
-	# Load the first level immediately for this prototype
-	call_deferred("load_level", 0)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+func start_game():
+	load_level(0)
+
+func load_main_menu():
+	get_tree().change_scene_to_file("res://main.tscn")
+
 func load_level(index: int):
-	if index < 0 or index >= levels.size():
-		print("Level index out of bounds or no levels defined yet.")
+	if index < 0:
+		print("Level index cannot be negative.")
+		return
+		
+	if index >= levels.size():
+		print("No more levels! Returning to main menu.")
+		load_main_menu()
 		return
 	
 	current_level_index = index
@@ -56,5 +65,5 @@ func register_stroke():
 
 func _process(delta):
 	# Assuming we are in a level
-	if get_tree().current_scene.name != "MainMenu": # Simple check
+	if get_tree().current_scene.name != "MainMenu" and get_tree().current_scene.name != "Main": 
 		current_time += delta

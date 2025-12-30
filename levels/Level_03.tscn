@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://ball.tscn" id="2_ball"]
 [ext_resource type="PackedScene" path="res://Hole.tscn" id="3_hole"]
 [ext_resource type="PackedScene" path="res://UI.tscn" id="4_ui"]
-[ext_resource type="TileSet" uid="uid://tilesetyellow123" path="res://platform/tileset_yellow.tres" id="5_tileset"]
+[ext_resource type="PackedScene" path="res://platform/Block.tscn" id="5_block"]
 
 [node name="Level_03" type="Node2D"]
 script = ExtResource("1_level")
@@ -12,14 +12,80 @@ script = ExtResource("1_level")
 [node name="UI" parent="." instance=ExtResource("4_ui")]
 
 [node name="Ball" parent="." instance=ExtResource("2_ball")]
-position = Vector2(200, 200)
+position = Vector2(256, 700)
 
 [node name="Hole" parent="." instance=ExtResource("3_hole")]
-position = Vector2(200, 900)
+position = Vector2(1600, 736)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = ExtResource("5_tileset")
-tile_map_data = PackedByteArray("AAD4/3oAAQAAAAAAAAD3/3oAAQAAAAAAAAD2/3oAAQAAAAAAAAD1/3oAAQAAAAAAAAD0/3oAAQAAAAAAAADz/3oAAQAAAAAAAADy/3oAAQAAAAAAAADx/3oAAQAAAAAAAADw/3oAAQAAAAAAAADv/3oAAQAAAAAAAADu/3oAAQAAAAAAAADt/3oAAQAAAAAAAADs/3oAAQAAAAAAAADs/3sAAQAAAAAAAADs/3wAAQAAAAAAAADs/30AAQAAAAAAAADs/34AAQAAAAAAAADs/38AAQAAAAAAAADs/4AAAQAAAAAAAADs/4EAAQAAAAAAAADs/4IAAQAAAAAAAADs/4MAAQAAAAAAAADs/4QAAQAAAAAAAADs/4UAAQAAAAAAAADt/4UAAQAAAAAAAADu/4UAAQAAAAAAAADv/4UAAQAAAAAAAADw/4UAAQAAAAAAAADx/4UAAQAAAAAAAADy/4UAAQAAAAAAAADz/4UAAQAAAAAAAAD0/4UAAQAAAAAAAAD1/4UAAQAAAAAAAAD2/4UAAQAAAAAAAAD3/4UAAQAAAAAAAAD4/4UAAQAAAAAA")
+[node name="Blocks" type="Node2D" parent="."]
+
+# Floor
+[node name="Block1" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(64, 800)
+[node name="Block2" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(128, 800)
+[node name="Block3" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(192, 800)
+[node name="Block4" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(256, 800)
+[node name="Block5" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(320, 800)
+[node name="Block6" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(384, 800)
+[node name="Block7" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(448, 800)
+[node name="Block8" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(512, 800)
+[node name="Block9" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(576, 800)
+[node name="Block10" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(640, 800)
+[node name="Block11" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(704, 800)
+[node name="Block12" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(768, 800)
+[node name="Block13" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(832, 800)
+[node name="Block14" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(896, 800)
+[node name="Block15" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(960, 800)
+[node name="Block16" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1024, 800)
+[node name="Block17" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1088, 800)
+[node name="Block18" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1152, 800)
+[node name="Block19" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1216, 800)
+[node name="Block20" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1280, 800)
+[node name="Block21" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1344, 800)
+[node name="Block22" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1408, 800)
+[node name="Block23" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1472, 800)
+[node name="Block24" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1536, 800)
+[node name="Block25" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1600, 800)
+[node name="Block26" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1664, 800)
+[node name="Block27" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1728, 800)
+[node name="Block28" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1792, 800)
+[node name="Block29" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1856, 800)
+[node name="Block30" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1920, 800)
+
+# The Wall (in the middle)
+[node name="Wall1" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(960, 736)
+[node name="Wall2" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(960, 672)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)

@@ -1,16 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://level01"]
+[gd_scene load_steps=6 format=3 uid="uid://level01"]
 
 [ext_resource type="Script" path="res://Level.gd" id="1_level"]
 [ext_resource type="PackedScene" path="res://ball.tscn" id="2_ball"]
 [ext_resource type="PackedScene" path="res://Hole.tscn" id="3_hole"]
 [ext_resource type="PackedScene" path="res://UI.tscn" id="4_ui"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_floor"]
-friction = 0.5
-bounce = 0.2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
-size = Vector2(1920, 100)
+[ext_resource type="PackedScene" path="res://platform/Block.tscn" id="5_block"]
 
 [node name="Level_01" type="Node2D"]
 script = ExtResource("1_level")
@@ -18,38 +12,73 @@ script = ExtResource("1_level")
 [node name="UI" parent="." instance=ExtResource("4_ui")]
 
 [node name="Ball" parent="." instance=ExtResource("2_ball")]
-position = Vector2(300, 500)
+position = Vector2(256, 700)
 
 [node name="Hole" parent="." instance=ExtResource("3_hole")]
-position = Vector2(1500, 500)
+position = Vector2(1600, 736)
 
-[node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(960, 1030)
-physics_material_override = SubResource("PhysicsMaterial_floor")
+[node name="Blocks" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("RectangleShape2D_floor")
-
-[node name="ColorRect" type="ColorRect" parent="Floor"]
-offset_left = -960.0
-offset_top = -50.0
-offset_right = 960.0
-offset_bottom = 50.0
-color = Color(0.2, 0.6, 0.2, 1)
-
-[node name="WallLeft" type="StaticBody2D" parent="."]
-position = Vector2(-50, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
-shape = SubResource("RectangleShape2D_floor")
-rotation = 1.5708
-
-[node name="WallRight" type="StaticBody2D" parent="."]
-position = Vector2(1970, 540)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
-shape = SubResource("RectangleShape2D_floor")
-rotation = 1.5708
+[node name="Block1" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(64, 800)
+[node name="Block2" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(128, 800)
+[node name="Block3" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(192, 800)
+[node name="Block4" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(256, 800)
+[node name="Block5" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(320, 800)
+[node name="Block6" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(384, 800)
+[node name="Block7" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(448, 800)
+[node name="Block8" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(512, 800)
+[node name="Block9" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(576, 800)
+[node name="Block10" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(640, 800)
+[node name="Block11" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(704, 800)
+[node name="Block12" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(768, 800)
+[node name="Block13" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(832, 800)
+[node name="Block14" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(896, 800)
+[node name="Block15" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(960, 800)
+[node name="Block16" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1024, 800)
+[node name="Block17" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1088, 800)
+[node name="Block18" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1152, 800)
+[node name="Block19" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1216, 800)
+[node name="Block20" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1280, 800)
+[node name="Block21" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1344, 800)
+[node name="Block22" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1408, 800)
+[node name="Block23" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1472, 800)
+[node name="Block24" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1536, 800)
+[node name="Block25" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1600, 800)
+[node name="Block26" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1664, 800)
+[node name="Block27" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1728, 800)
+[node name="Block28" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1792, 800)
+[node name="Block29" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1856, 800)
+[node name="Block30" parent="Blocks" instance=ExtResource("5_block")]
+position = Vector2(1920, 800)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
