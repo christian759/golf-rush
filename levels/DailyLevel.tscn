@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dailylevel"]
+
+[ext_resource type="Script" path="res://Level.gd" id="1_level"]
+[ext_resource type="Script" path="res://LevelGenerator.gd" id="2_gen"]
+[ext_resource type="Script" path="res://DailyLevel.gd" id="2_script"]
+[ext_resource type="PackedScene" path="res://UI.tscn" id="4_ui"]
+
+[node name="DailyLevel" type="Node2D"]
+script = ExtResource("1_level")
+
+[node name="Logic" type="Node" parent="."]
+script = ExtResource("2_script")
+
+[node name="UI" parent="." instance=ExtResource("4_ui")]
+
+[node name="LevelGenerator" type="Node2D" parent="."]
+script = ExtResource("2_gen")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
