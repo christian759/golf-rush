@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://MainMenu.gd" id="1_menu"]
 [ext_resource type="Texture2D" uid="uid://bx308tdkipqcj" path="res://platform/tileYellow_03.png" id="2_bg_pattern"]
+[ext_resource type="Theme" uid="uid://flattheme123" path="res://flat_theme.tres" id="3_theme"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,10 +20,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1, 0.1, 0.15, 1)
+color = Color(0.2, 0.6, 0.86, 1) # Sky Blue
 
 [node name="Pattern" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.05)
+modulate = Color(1, 1, 1, 0.1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,6 +46,7 @@ offset_right = 250.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_theme")
 theme_override_constants/separation = 50
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]

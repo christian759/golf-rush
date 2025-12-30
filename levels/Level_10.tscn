@@ -1,61 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://level10"]
+[gd_scene load_steps=5 format=3 uid="uid://level10"]
 
 [ext_resource type="Script" path="res://Level.gd" id="1_level"]
-[ext_resource type="PackedScene" path="res://ball.tscn" id="2_ball"]
-[ext_resource type="PackedScene" path="res://Hole.tscn" id="3_hole"]
+[ext_resource type="Script" path="res://LevelGenerator.gd" id="2_gen"]
 [ext_resource type="PackedScene" path="res://UI.tscn" id="4_ui"]
-[ext_resource type="PackedScene" path="res://platform/Block.tscn" id="5_block"]
 
 [node name="Level_10" type="Node2D"]
 script = ExtResource("1_level")
 
 [node name="UI" parent="." instance=ExtResource("4_ui")]
 
-[node name="Ball" parent="." instance=ExtResource("2_ball")]
-position = Vector2(200, 700)
-
-[node name="Hole" parent="." instance=ExtResource("3_hole")]
-position = Vector2(1700, 736)
-
-[node name="Blocks" type="Node2D" parent="."]
-
-# Ramp Up
-[node name="Ramp1" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(64, 800)
-[node name="Ramp2" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(128, 800)
-[node name="Ramp3" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(192, 800)
-[node name="Ramp4" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(256, 800)
-[node name="Ramp5" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(320, 800)
-
-[node name="Ramp6" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(448, 700)
-[node name="Ramp7" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(512, 700)
-
-[node name="Ramp8" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(640, 600)
-[node name="Ramp9" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(704, 600)
-
-# The Big Leap (704 to 1500)
-
-# Landing
-[node name="Land1" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1500, 800)
-[node name="Land2" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1564, 800)
-[node name="Land3" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1628, 800)
-[node name="Land4" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1692, 800)
-[node name="Land5" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1756, 800)
-[node name="Land6" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1820, 800)
+[node name="LevelGenerator" type="Node2D" parent="."]
+script = ExtResource("2_gen")
+level_data = "..............................
+..............................
+..............................
+..............................
+..............................
+..................H...........
+.................###..........
+................#####.........
+...............#######........
+.......#......#########.......
+......###....###########......
+.....#####..#############.....
+.O..#####################....."
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)

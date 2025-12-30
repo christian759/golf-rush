@@ -1,75 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://level04"]
+[gd_scene load_steps=5 format=3 uid="uid://level04"]
 
 [ext_resource type="Script" path="res://Level.gd" id="1_level"]
-[ext_resource type="PackedScene" path="res://ball.tscn" id="2_ball"]
-[ext_resource type="PackedScene" path="res://Hole.tscn" id="3_hole"]
+[ext_resource type="Script" path="res://LevelGenerator.gd" id="2_gen"]
 [ext_resource type="PackedScene" path="res://UI.tscn" id="4_ui"]
-[ext_resource type="PackedScene" path="res://platform/Block.tscn" id="5_block"]
 
 [node name="Level_04" type="Node2D"]
 script = ExtResource("1_level")
 
 [node name="UI" parent="." instance=ExtResource("4_ui")]
 
-[node name="Ball" parent="." instance=ExtResource("2_ball")]
-position = Vector2(256, 700)
-
-[node name="Hole" parent="." instance=ExtResource("3_hole")]
-position = Vector2(1600, 480)
-
-[node name="Blocks" type="Node2D" parent="."]
-
-# Floor
-[node name="Block1" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(64, 800)
-[node name="Block2" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(128, 800)
-[node name="Block3" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(192, 800)
-[node name="Block4" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(256, 800)
-[node name="Block5" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(320, 800)
-[node name="Block6" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(384, 800)
-
-# Stairs
-[node name="Stair1" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(512, 736)
-[node name="Stair2" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(576, 736)
-
-[node name="Stair3" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(704, 672)
-[node name="Stair4" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(768, 672)
-
-[node name="Stair5" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(896, 608)
-[node name="Stair6" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(960, 608)
-
-[node name="Stair7" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1088, 544)
-[node name="Stair8" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1152, 544)
-
-# Top Platform
-[node name="Top1" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1280, 544)
-[node name="Top2" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1344, 544)
-[node name="Top3" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1408, 544)
-[node name="Top4" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1472, 544)
-[node name="Top5" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1536, 544)
-[node name="Top6" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1600, 544)
-[node name="Top7" parent="Blocks" instance=ExtResource("5_block")]
-position = Vector2(1664, 544)
-
+[node name="LevelGenerator" type="Node2D" parent="."]
+script = ExtResource("2_gen")
+level_data = "..............................
+..............................
+..............................
+......................H.......
+.....................###......
+...................#####......
+.................#######......
+...............#########......
+..O..........###########......
+.#####.....#############......
+.#####...###############......
+.#####.#################......"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
