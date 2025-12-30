@@ -9,6 +9,7 @@ extends RigidBody2D
 @export var max_speed := 1500.0
 @export var power_curve := 1.25
 
+@export var launch_angle_deg := 55.0
 @export var trajectory_points := 24
 @export var trajectory_step := 0.08
 @export var gravity := 980.0
@@ -18,7 +19,7 @@ extends RigidBody2D
 # =====================
 @onready var trajectory: Line2D = $TrajectoryLine
 
-var touch_start := Vector2.ZERO
+var pointer_pos := Vector2.ZERO
 var is_dragging := false
 var can_shoot := true
 
@@ -42,43 +43,68 @@ func _physics_process(_delta):
 		linear_velocity = linear_velocity.normalized() * max_speed
 
 # =====================
-# INPUT (MOBILE)
+# INPUT (TOUCH + MOUSE)
 # =====================
 func _input(event):
 	if not can_shoot:
 		return
 
+	# -------- TOUCH --------
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			touch_start = event.position
-			is_dragging = true
-			trajectory.visible = true
+			start_aim(event.position)
 		else:
-			fire_shot(event.position)
-			is_dragging = false
-			trajectory.visible = false
+			release_shot(event.position)
 
 	if event is InputEventScreenDrag and is_dragging:
 		update_trajectory(event.position)
 
+	# -------- MOUSE --------
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				start_aim(event.position)
+			else:
+				release_shot(event.position)
+
+	if event is InputEventMouseMotion and is_dragging:
+		update_trajectory(event.position)
+
+# =====================
+# AIM CONTROL
+# =====================
+func start_aim(pos: Vector2):
+	pointer_pos = pos
+	is_dragging = true
+	trajectory.visible = true
+	update_trajectory(pos)
+
+func release_shot(pos: Vector2):
+	fire_shot(pos)
+	is_dragging = false
+	trajectory.visible = false
+
 # =====================
 # TRAJECTORY PREVIEW
 # =====================
-func update_trajectory(current_pos: Vector2):
-	var drag = touch_start - current_pos
+func update_trajectory(pointer: Vector2):
+	var to_target = pointer - global_position
+	var distance = to_target.length()
 
-	# Prevent backward shots
-	drag.y = min(drag.y, 0)
-
-	var raw_force = drag.length()
-	if raw_force < min_drag:
+	if distance < min_drag:
 		trajectory.clear_points()
 		return
 
-	var normalized = clamp(raw_force / max_force, 0.0, 1.0)
-	var force = pow(normalized, power_curve) * max_force
+	var t = clamp(distance / max_force, 0.0, 1.0)
+	var speed = pow(t, power_curve) * max_force / mass
 
-	var velocity = drag.normalized() * force / mass
+	var angle = deg_to_rad(launch_angle_deg)
+	var dir = to_target.normalized()
+
+	var velocity = Vector2(
+		dir.x * speed * cos(angle),
+		-speed * sin(angle)
+	)
 
 	trajectory.clear_points()
 
@@ -93,18 +119,25 @@ func update_trajectory(current_pos: Vector2):
 # =====================
 # SHOOT
 # =====================
-func fire_shot(touch_end: Vector2):
-	var drag = touch_start - touch_end
-	drag.y = min(drag.y, 0)
+func fire_shot(pointer: Vector2):
+	var to_target = pointer - global_position
+	var distance = to_target.length()
 
-	var raw_force = drag.length()
-	if raw_force < min_drag:
+	if distance < min_drag:
 		return
 
-	var normalized = clamp(raw_force / max_force, 0.0, 1.0)
-	var force = pow(normalized, power_curve) * max_force
+	var t = clamp(distance / max_force, 0.0, 1.0)
+	var speed = pow(t, power_curve) * max_force
 
-	apply_impulse(drag.normalized() * force)
+	var angle = deg_to_rad(launch_angle_deg)
+	var dir = to_target.normalized()
+
+	var impulse = Vector2(
+		dir.x * speed * cos(angle),
+		-speed * sin(angle)
+	)
+
+	apply_impulse(impulse)
 	Input.vibrate_handheld(20)
 
 	can_shoot = false
