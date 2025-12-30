@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://holeSCENE123"]
+
+[ext_resource type="Script" path="res://Hole.gd" id="1_hole"]
+[ext_resource type="Texture2D" path="res://icon.svg" id="2_icon"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hole"]
+radius = 30.0
+
+[node name="Hole" type="Area2D"]
+script = ExtResource("1_hole")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hole")
