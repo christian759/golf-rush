@@ -180,5 +180,3 @@ func fire_shot(pointer: Vector2):
 	
 	# Juice
 	# Input.vibrate_handheld(20) # Good for feedback
-
-

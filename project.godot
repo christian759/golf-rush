@@ -10,11 +10,13 @@ config_version=5
 
 [application]
 
+run/main_scene="uid://bkk0tye4qsoqv"
+config/features=PackedStringArray("4.5")
+
 [autoload]
 
 GameManager="*res://GameManager.gd"
 autoload/GameManager="*res://GameManager.gd"
-
 config/name="Golf Rush"
 run/main_scene="uid://bkk0tye4qsoqv"
 config/features=PackedStringArray("4.5", "Mobile")
