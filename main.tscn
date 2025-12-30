@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkk0tye4qsoqv"]
+[gd_scene load_steps=4 format=3 uid="uid://bkk0tye4qsoqv"]
 
 [ext_resource type="PackedScene" uid="uid://b1wt4t4j2dlh0" path="res://bgs/parallax_background3.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cogsxln3lv8oa" path="res://platform.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dw3gxw6xb3q51" path="res://ball.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D"]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("1_0xm2m")]
 
 [node name="platform" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="RigidBody2D" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(143, 569)

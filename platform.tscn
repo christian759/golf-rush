@@ -55,11 +55,13 @@ texture = ExtResource("7_vhbyw")
 texture = ExtResource("8_c40u7")
 0:0/size_in_atlas = Vector2i(4, 3)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32.17501, -31.610538, 32.739487, -31.610538, 30.48159, 31.610535, -31.610535, 30.48159)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_112qv"]
 texture = ExtResource("9_k8sf2")
 0:0/size_in_atlas = Vector2i(4, 3)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32.17501, -31.610538, 32.739487, -31.610538, 30.48159, 31.610535, -31.610535, 30.48159)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t8txt"]
 texture = ExtResource("10_0empe")
@@ -70,6 +72,7 @@ texture = ExtResource("10_0empe")
 texture = ExtResource("11_86ryj")
 0:0/size_in_atlas = Vector2i(4, 4)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32.17501, -24.836851, 31.046066, -23.143429, 30.48159, 31.610535, -31.610535, 30.48159)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upoi7"]
 texture = ExtResource("12_sh3xm")
@@ -80,11 +83,13 @@ texture = ExtResource("12_sh3xm")
 texture = ExtResource("13_kns44")
 0:0/size_in_atlas = Vector2i(4, 4)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32.17501, -31.610538, 32.739487, -31.610538, 30.48159, 31.610535, -31.610535, 30.48159)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhenq"]
 texture = ExtResource("14_14mhl")
 0:0/size_in_atlas = Vector2i(4, 4)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32.17501, -31.610538, 32.739487, -31.610538, 30.48159, 31.610535, -31.610535, 30.48159)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7mtf"]
 texture = ExtResource("15_yhbkw")
@@ -92,6 +97,7 @@ texture = ExtResource("15_yhbkw")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_55de4"]
+physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_rq08u")
 sources/3 = SubResource("TileSetAtlasSource_112qv")
 sources/4 = SubResource("TileSetAtlasSource_t8txt")
@@ -112,5 +118,6 @@ sources/16 = SubResource("TileSetAtlasSource_a6ylv")
 scale = Vector2(1.5, 1.5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 3
 tile_map_data = PackedByteArray("AAABACsAEAAAAAAAAGABACcABQAAAAAAAAABACMABQAAAAAAAAABAB8AEAAAAAAAAGABABsABwAAAAAAAAAFABsABwAAAAAAAAAJABsABwAAAAAAAAANABsABwAAAAAAAAARABsABwAAAAAAAAAVABsABwAAAAAAAAAZABsABwAAAAAAAAAdABsACAAAAAAAAAAdAB8ABQAAAAAAAAAdACMABQAAAAAAAAAdACcABQAAAAAAAAAdACsABQAAAAAAAAAFAB8ABQAAAAAAAAAJAB8ABQAAAAAAAAANAB8ABQAAAAAAAAARAB8ABQAAAAAAAAAVAB8ABQAAAAAAAAAZAB8ABQAAAAAAAAAZACMABQAAAAAAAAAZACcABQAAAAAAAAAZACsACgAAAAAAAGAFACMABQAAAAAAAAAFACcABQAAAAAAAAAFACsABQAAAAAAAAAJACMABQAAAAAAAAANACMABQAAAAAAAAARACMAEAAAAAAAAGAVACMABQAAAAAAAAAVACcABQAAAAAAAAARACcABQAAAAAAAAANACcABQAAAAAAAAAJACcAEAAAAAAAAGAJACsABQAAAAAAAAAVACsABQAAAAAAAAARACsABQAAAAAAAAANACsABQAAAAAAAAAaACEAEAAAAAAAAGAPACsACgAAAAAAAGAKACAACgAAAAAAAGA=")
 tile_set = SubResource("TileSet_55de4")

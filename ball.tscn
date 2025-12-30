@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw3gxw6xb3q51"]
+[gd_scene load_steps=5 format=3 uid="uid://dw3gxw6xb3q51"]
 
 [ext_resource type="Script" uid="uid://ch3pgkacm7x77" path="res://ball.gd" id="1_x8fbi"]
+[ext_resource type="Texture2D" uid="uid://dvpttxe4dukhl" path="res://ball.png" id="2_41u45"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cbx31"]
 friction = 0.8
 bounce = 0.15
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cbx31"]
+radius = 23.194826
 
 [node name="RigidBody2D" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_cbx31")
@@ -16,9 +18,12 @@ angular_damp = 1.2
 script = ExtResource("1_x8fbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 3
 shape = SubResource("CircleShape2D_cbx31")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_41u45")
 
 [node name="TrajectoryLine" type="Line2D" parent="."]
 z_index = 5
