@@ -230,4 +230,3 @@ func generate_daily_level(seed_val: int):
 		var y = pos.y
 		var source_id = get_tile_source_id(grid, x, y)
 		tilemap.set_cell(pos, source_id, Vector2i(0, 0))
-
