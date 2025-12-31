@@ -3,7 +3,6 @@ extends Node2D
 @export_multiline var level_data: String = ""
 @export var ball_scene: PackedScene = preload("res://ball.tscn")
 @export var hole_scene: PackedScene = preload("res://Hole.tscn")
-@export var tileset: TileSet = preload("res://platform/tileset_yellow.tres")
 
 const CELL_SIZE = 64
 const TILE_SOURCE_OFFSET = 2 # IDs start at 2 for the 3x3 block
@@ -13,13 +12,65 @@ const TILE_SOURCE_OFFSET = 2 # IDs start at 2 for the 3x3 block
 # 3 4 5
 # 6 7 8
 #
-# ID Mapping in TileSet resource (verified from file):
-# 2: TL, 3: T, 4: TR
-# 5: L,  6: C, 7: R
-# 8: BL, 9: B, 10: BR
+# ID Mapping in TileSet (programmatically created):
+# 2: TL (tileYellow_01.png), 3: T (tileYellow_02.png), 4: TR (tileYellow_03.png)
+# 5: L (tileYellow_04.png),  6: C (tileYellow_05.png), 7: R (tileYellow_06.png)
+# 8: BL (tileYellow_07.png), 9: B (tileYellow_08.png), 10: BR (tileYellow_09.png)
+
+var tileset: TileSet
 
 func _ready():
+	_create_tileset()
 	generate_level()
+
+func _create_tileset():
+	# Create TileSet programmatically to avoid .tres loading issues
+	tileset = TileSet.new()
+	
+	# Add physics layer
+	tileset.add_physics_layer()
+	tileset.set_physics_layer_collision_layer(0, 1)
+	
+	# Tile mapping: source ID -> image filename
+	var tile_images = {
+		2: "res://platform/tileYellow_01.png",  # Top-Left
+		3: "res://platform/tileYellow_02.png",  # Top
+		4: "res://platform/tileYellow_03.png",  # Top-Right
+		5: "res://platform/tileYellow_04.png",  # Left
+		6: "res://platform/tileYellow_05.png",  # Center
+		7: "res://platform/tileYellow_06.png",  # Right
+		8: "res://platform/tileYellow_07.png",  # Bottom-Left
+		9: "res://platform/tileYellow_08.png",  # Bottom
+		10: "res://platform/tileYellow_09.png"  # Bottom-Right
+	}
+	
+	# Create collision polygon points (standard rectangle)
+	var collision_points = PackedVector2Array([
+		Vector2(-32, -32),
+		Vector2(32, -32),
+		Vector2(32, 32),
+		Vector2(-32, 32)
+	])
+	
+	# Create atlas source for each tile
+	for source_id in tile_images.keys():
+		var atlas = TileSetAtlasSource.new()
+		var texture = load(tile_images[source_id])
+		atlas.texture = texture
+		
+		# Set texture size in atlas
+		atlas.texture_region_size = Vector2i(64, 64)
+		
+		# Create tile at 0,0
+		atlas.create_tile(Vector2i(0, 0))
+		
+		# Add physics layer with collision
+		var tile_data = atlas.get_tile_data(Vector2i(0, 0), 0)
+		tile_data.set_collision_polygons_count(0, 1)
+		tile_data.set_collision_polygon_points(0, 0, collision_points)
+		
+		# Add source to tileset
+		tileset.add_source(atlas, source_id)
 
 func generate_level():
 	# Clean children
