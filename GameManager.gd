@@ -64,6 +64,11 @@ func register_stroke():
 	current_score += 1
 
 func _process(delta):
-	# Assuming we are in a level
-	if get_tree().current_scene.name != "MainMenu" and get_tree().current_scene.name != "Main": 
+	# Wait for scene to be ready/loaded
+	if get_tree().current_scene == null:
+		return
+		
+	# Assuming we are in a level, only increment timer if not in a menu
+	var scene_name = get_tree().current_scene.name
+	if scene_name != "MainMenu" and scene_name != "Main" and scene_name != "DailyMenu": 
 		current_time += delta
